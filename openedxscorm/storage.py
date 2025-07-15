@@ -23,7 +23,7 @@ class S3ScormStorage(S3Boto3Storage):
             bucket_name=bucket_name,
             querystring_auth=querystring_auth,
             querystring_expire=querystring_expire,
-            custom_domain='local.openedx.io/scorm-xblock',
+            custom_domain=f'{settings.SITE_NAME}/scorm-xblock',
         )
 
 

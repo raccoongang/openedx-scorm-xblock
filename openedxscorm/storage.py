@@ -4,6 +4,7 @@ Storage backend for scorm metadata export.
 
 import os
 from django.conf import settings
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 from storages.backends.s3boto3 import S3Boto3Storage
 
@@ -23,7 +24,7 @@ class S3ScormStorage(S3Boto3Storage):
             bucket_name=bucket_name,
             querystring_auth=querystring_auth,
             querystring_expire=querystring_expire,
-            custom_domain=f'{settings.SITE_NAME}/scorm-xblock',
+            custom_domain=f'{configuration_helpers.get_value("SITE_NAME", settings.SITE_NAME)}/scorm-xblock',
         )
 
 
